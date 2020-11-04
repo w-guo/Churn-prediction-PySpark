@@ -2,7 +2,7 @@
 
 This repository contains a Jupyter notebook `Sparkify_mini.ipynb` that documents an end-to-end model development process performed on a simulated streaming service dataset using Python API for Spark, `PySpark`.
 
-### Project Overview
+### Project overview
 
 Predicting customer churn is a challenging and common problem for any e-commerce business in which everything depends on the behavior of customers. Customer churn is often defined as the process in which the customers downgrade from premium to free tier or stop using the products or services of a business. Thus, the ability to predict which users are at risk of churning, while there is still time to offer them discounts or other incentives, will greatly help to prevent every custormer-facing business from suffering severe financial losses.
 
