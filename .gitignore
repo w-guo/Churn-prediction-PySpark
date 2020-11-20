@@ -1,3 +1,4 @@
 
 .ipynb_checkpoints/Sparkify_mini-checkpoint.ipynb
 .ipynb_checkpoints/Sparkify_full-checkpoint.ipynb
+*.json
