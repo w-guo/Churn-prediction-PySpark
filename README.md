@@ -26,7 +26,7 @@ In addition to `PySpark`, the following Python libraries are also required to be
 The best results obtained on the test set from the three models are summarized in the table below:
 
 
-<div style="font-size: 10px">
+
 
 | Classifier                       | Parameters                                    | Precision |          | Recall  |          | F1 score |         |  AUC-PR  |
 | :------------------------------- | :-------------------------------------------- | :-------: | :------: | :-----: | :------: | :------: | :-----: | :------: |
@@ -34,6 +34,24 @@ The best results obtained on the test set from the three models are summarized i
 | Logistic regression              | maxIter=10, regParam=0.1, elasticNetParam=0.5 |   0.85    |   1.00   |  0.82   |   0.20   |   0.77   |  0.33   |   0.72   |
 | Random forest classifier         | maxDepth=4, numTrees=100                      |   0.86    | **0.75** |  0.86   | **0.60** | **0.86** |  0.67   | **0.77** |
 | Gradient-boosted tree classifier | maxDepth=5, maxIter=100                       |   0.77    |   0.43   |  0.73   |   0.60   |   0.74   |  0.50   |   0.65   |
+
+<div style="font-size: 10px">
+<table>
+  <thead>
+    <tr>
+      <th><sub>Test Case</sub></th>
+      <th><sub>Brief Explanation</sub></th><th><sub>Go Result</sub></th><th><sub>Python Result</sub></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><sub>simple</sub></td>
+      <td>- <sub>Upload parent image and child image</sub><br>- <sub>Get ancestry of child image</sub> <br>- <sub>Verify child and parent image ids</sub></td>
+      <td><sub>Fail</sub></td>
+      <td><sub>Pass</sub></td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
 ### Acknowledgements
