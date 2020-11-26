@@ -33,22 +33,6 @@ The best results obtained on the test set from the three models are summarized i
 | <sub>Random forest classifier</sub>         | maxDepth=4, numTrees=100                      |   0.86    | **0.75** |  0.86   | **0.60** | **0.86** |  0.67   | **0.77** |
 | <sub>Gradient-boosted tree classifier</sub> | maxDepth=5, maxIter=100                       |   0.77    |   0.43   |  0.73   |   0.60   |   0.74   |  0.50   |   0.65   |
 
-<table>
-  <thead>
-    <tr>
-      <th><sub>Classifier</sub></th><th><sub>Parameters</sub></th><th><sub>Go Result</sub></th><th><sub>Python Result</sub></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><sub>Logistic</sub><br><sub>regression</sub></td>
-      <td><sub>maxIter=10,</sub><br><sub>regParam=0.1,</sub><br><sub>elasticNetParam=0.5</sub></td>
-      <td><sub>Fail</sub></td>
-      <td><sub>Pass</sub></td>
-    </tr>
-  </tbody>
-</table>
-
 
 ### Acknowledgements
 Credit to Udacity for designing the project and hosting the datasets:
