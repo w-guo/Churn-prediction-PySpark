@@ -29,13 +29,13 @@ The best results obtained on the test set from the three models are summarized i
 <div style="font-size: 10px">
 
 | Classifier                       | Parameters                                    | Precision |          | Recall  |          | F1 score |         |  AUC-PR  |
-| :------------------------------- | :-------------------------------------------- | :-------: | -------- | :-----: | -------- | :------: | ------- | :------: |
+| :------------------------------- | :-------------------------------------------- | :-------: | :------: | :-----: | :------: | :------: | :-----: | :------: |
 |                                  |                                               |  Overall  | Churned  | Overall | Churned  | Overall  | Churned |          |
-| Logistic regression              | maxIter=10, regParam=0.1, elasticNetParam=0.5 |   0.85    | 1.00     |  0.82   | 0.20     |   0.77   | 0.33    |   0.72   |
-| Random forest classifier         | maxDepth=4, numTrees=100                      |   0.86    | **0.75** |  0.86   | **0.60** | **0.86** | 0.67    | **0.77** |
-| Gradient-boosted tree classifier | maxDepth=5, maxIter=100                       |   0.77    | 0.43     |  0.73   | 0.60     |   0.74   | 0.50    |   0.65   |
-
+| Logistic regression              | maxIter=10, regParam=0.1, elasticNetParam=0.5 |   0.85    |   1.00   |  0.82   |   0.20   |   0.77   |  0.33   |   0.72   |
+| Random forest classifier         | maxDepth=4, numTrees=100                      |   0.86    | **0.75** |  0.86   | **0.60** | **0.86** |  0.67   | **0.77** |
+| Gradient-boosted tree classifier | maxDepth=5, maxIter=100                       |   0.77    |   0.43   |  0.73   |   0.60   |   0.74   |  0.50   |   0.65   |
 </div>
+
 ### Acknowledgements
 Credit to Udacity for designing the project and hosting the datasets:
 
