@@ -26,8 +26,8 @@ In addition to `PySpark`, the following Python libraries are also required to be
 The best results obtained on the test set from the three models are summarized in the table below:
 
 
-
 <div style="font-size: 10px">
+
 | Classifier                       | Parameters                                    | Precision |          | Recall  |          | F1 score |         |  AUC-PR  |
 | :------------------------------- | :-------------------------------------------- | :-------: | :------: | :-----: | :------: | :------: | :-----: | :------: |
 |                                  |                                               |  Overall  | Churned  | Overall | Churned  | Overall  | Churned |          |
