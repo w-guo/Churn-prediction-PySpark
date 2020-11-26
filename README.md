@@ -18,28 +18,52 @@ This repository contains the following files:
 * `Sparkify_full.ipynb`: modularized version of `Sparkify_mini.ipynb` used to train the full dataset on the AWS EMR cluster
 * `us_region.csv`: [csv file](https://github.com/cphalpert/census-regions) used in `Sparkify_mini.ipynb` that assigns each state to its geographical division (data source: [U.S. Census Bureau](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf))
 
-#### Datasets
-
-* The full Sparkify dataset (12GB) can be found at `s3n://udacity-dsnd/sparkify/sparkify_event_data.json`
-* The smaller version (128MB) is available at `s3n://udacity-dsnd/sparkify/mini_sparkify_event_data.json`
-   
 #### Prerequisites
 
-In addition to `PySpark`, the following Python libraries are also required to be installed: `Numpy`, `Scipy`, `Pandas`, `Matplotlib`, `seaborn` and `time`.
+To run `Sparkify_mini.ipynb` locally, the following Python libraries are required to be installed in addition to `PySpark`: `Numpy`, `Scipy`, `Pandas`, `Matplotlib`, `seaborn` and `time`.
+
+#### Cloud deployment
+To run `Sparkify_full.ipynb` on the AWS EMR, configure your cluster with the following settings:
+* Release: `emr-5.20.0` or later
+* Applications: `Spark`: Spark 2.4.0 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0
+* Instance type: `m3.xlarge`
+* Number of instance: `3`
+* EC2 key pair: `Proceed without an EC2 key pair` or feel free to use one
+
+### Troubleshooting
+
+```
+Exception in thread cell_monitor-31:
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/opt/conda/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/conda/lib/python3.7/site-packages/awseditorssparkmonitoringwidget-1.0-py3.7.egg/awseditorssparkmonitoringwidget/cellmonitor.py", line 178, in cell_monitor
+    job_binned_stages[job_id][stage_id] = all_stages[stage_id]
+KeyError: 6490
+```
+
+```
+An error was encountered:
+Invalid status code '400' from https://172.31.23.49:18888/sessions/2/statements/19 with error payload: {"msg":"requirement failed: Session isn't active."}
+```
 
 ### Results
 
 The best results obtained on the test set from the three models are summarized in the table below:
 
-| <sub>Classifier</sub>                       | <sub>Parameters</sub>                                    | <sub>Precision</sub> |                     | <sub>Recall</sub>  |                     | <sub>F1 score</sub> |                    |  <sub>AUC-PR</sub>  |
-| :------------------------------------------ | :------------------------------------------------------- | :------------------: | :-----------------: | :----------------: | :-----------------: | :-----------------: | :----------------: | :-----------------: |
-|                                             |                                                          |  <sub>Overall</sub>  | <sub>Churned</sub>  | <sub>Overall</sub> | <sub>Churned</sub>  | <sub>Overall</sub>  | <sub>Churned</sub> |                     |
-| <sub>Logistic regression</sub>              | <sub>maxIter=10, regParam=0.1, elasticNetParam=0.5</sub> |   <sub>0.85</sub>    |   <sub>1.00</sub>   |  <sub>0.82</sub>   |   <sub>0.20</sub>   |   <sub>0.77</sub>   |  <sub>0.33</sub>   |   <sub>0.72</sub>   |
-| <sub>Random forest classifier</sub>         | <sub>maxDepth=4, numTrees=100</sub>                      |   <sub>0.86</sub>    | <sub>**0.75**</sub> |  <sub>0.86</sub>   | <sub>**0.60**</sub> | <sub>**0.86**</sub> |  <sub>0.67</sub>   | <sub>**0.77**</sub> |
-| <sub>Gradient-boosted tree classifier</sub> | <sub>maxDepth=5, maxIter=100</sub>                       |   <sub>0.77</sub>    |   <sub>0.43</sub>   |  <sub>0.73</sub>   |   <sub>0.60</sub>   |   <sub>0.74</sub>   |  <sub>0.50</sub>   |   <sub>0.65</sub>   |
+| <sub>Dataset</sub>      | <sub>Parameters</sub>                | <sub>Precision</sub> |                     | <sub>Recall</sub>  |                     | <sub>F1 score</sub> |                     |  <sub>AUC-PR</sub>  |
+| :---------------------- | :----------------------------------- | :------------------: | :-----------------: | :----------------: | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+|                         |                                      |  <sub>Overall</sub>  | <sub>Churned</sub>  | <sub>Overall</sub> | <sub>Churned</sub>  | <sub>Overall</sub>  | <sub>Churned</sub>  |                     |
+| <sub>Mini dataset</sub> | <sub>maxDepth=4, numTrees=100</sub>  |   <sub>0.86</sub>    | <sub>**0.75**</sub> |  <sub>0.86</sub>   | <sub>**0.60**</sub> | <sub>**0.86**</sub> | <sub>**0.67**</sub> | <sub>**0.77**</sub> |
+| <sub>Full dataset</sub> | <sub>maxDepth=10, numTrees=100</sub> |   <sub>0.92</sub>    | <sub>**0.93**</sub> |  <sub>0.91</sub>   | <sub>**0.64**</sub> | <sub>**0.91**</sub> | <sub>**0.76**</sub> | <sub>**0.89**</sub> |
 
 
 ### Acknowledgements
-Credit to Udacity for designing the project and hosting the datasets.
+Credit to Udacity for designing the project and hosting the datasets:
 
+* The full Sparkify dataset (12GB) can be found at `s3n://udacity-dsnd/sparkify/sparkify_event_data.json`
+* The smaller version (128MB) is available at `s3n://udacity-dsnd/sparkify/mini_sparkify_event_data.json`
+  
 Blog reference: https://medium.com/@lukazaplotnik/sparkify-churn-prediction-with-pyspark-da50652f2afc
