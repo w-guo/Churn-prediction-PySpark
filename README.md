@@ -27,7 +27,7 @@ The best results obtained on the test set from the three models are summarized i
 
 
 | <sub>Classifier</sub>                       | <sub>Parameters</sub>                                    | <sub>Precision</sub> |                     | <sub>Recall</sub>  |                     | <sub>F1 score</sub> |                    |  <sub>AUC-PR</sub>  |
-| :------------------------------------- | :--------------------------------------- | :------------------: | :-----------------: | :----------------: | :-----------------: | :-----------------: | :----------------: | :-----------------: |
+| :-------------------------- | :-------------------------- | :------------------: | :-----------------: | :----------------: | :-----------------: | :-----------------: | :----------------: | :-----------------: |
 |                                             |                                                          |  <sub>Overall</sub>  | <sub>Churned</sub>  | <sub>Overall</sub> | <sub>Churned</sub>  | <sub>Overall</sub>  | <sub>Churned</sub> |                     |
 | <sub>Logistic regression</sub>              | <sub>maxIter=10, regParam=0.1, elasticNetParam=0.5</sub> |   <sub>0.85</sub>    |   <sub>1.00</sub>   |  <sub>0.82</sub>   |   <sub>0.20</sub>   |   <sub>0.77</sub>   |  <sub>0.33</sub>   |   <sub>0.72</sub>   |
 | <sub>Random forest classifier</sub>         | <sub>maxDepth=4, numTrees=100</sub>                      |   <sub>0.86</sub>    | <sub>**0.75**</sub> |  <sub>0.86</sub>   | <sub>**0.60**</sub> | <sub>**0.86**</sub> |  <sub>0.67</sub>   | <sub>**0.77**</sub> |
