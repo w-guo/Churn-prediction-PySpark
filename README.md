@@ -26,12 +26,12 @@ In addition to `PySpark`, the following Python libraries are also required to be
 The best results obtained on the test set from the three models are summarized in the table below:
 
 
-| <sub>Classifier</sub>                       | Parameters                                    | Precision |          | Recall  |          | F1 score |         |  AUC-PR  |
-| :------------------------------------------ | :-------------------------------------------- | :-------: | :------: | :-----: | :------: | :------: | :-----: | :------: |
-|                                             |                                               |  Overall  | Churned  | Overall | Churned  | Overall  | Churned |          |
-| <sub>Logistic regression</sub>              | maxIter=10, regParam=0.1, elasticNetParam=0.5 |   0.85    |   1.00   |  0.82   |   0.20   |   0.77   |  0.33   |   0.72   |
-| <sub>Random forest classifier</sub>         | maxDepth=4, numTrees=100                      |   0.86    | **0.75** |  0.86   | **0.60** | **0.86** |  0.67   | **0.77** |
-| <sub>Gradient-boosted tree classifier</sub> | maxDepth=5, maxIter=100                       |   0.77    |   0.43   |  0.73   |   0.60   |   0.74   |  0.50   |   0.65   |
+| <sub>Classifier</sub>                       | <sub>Parameters</sub>                                    | <sub>Precision</sub> |                     | <sub>Recall</sub>  |                     | <sub>F1 score</sub> |                    |  <sub>AUC-PR</sub>  |
+| :------------------------------------------ | :------------------------------------------------------- | :------------------: | :-----------------: | :----------------: | :-----------------: | :-----------------: | :----------------: | :-----------------: |
+|                                             |                                                          |  <sub>Overall</sub>  | <sub>Churned</sub>  | <sub>Overall</sub> | <sub>Churned</sub>  | <sub>Overall</sub>  | <sub>Churned</sub> |                     |
+| <sub>Logistic regression</sub>              | <sub>maxIter=10, regParam=0.1, elasticNetParam=0.5</sub> |   <sub>0.85</sub>    |   <sub>1.00</sub>   |  <sub>0.82</sub>   |   <sub>0.20</sub>   |   <sub>0.77</sub>   |  <sub>0.33</sub>   |   <sub>0.72</sub>   |
+| <sub>Random forest classifier</sub>         | <sub>maxDepth=4, numTrees=100</sub>                      |   <sub>0.86</sub>    | <sub>**0.75**</sub> |  <sub>0.86</sub>   | <sub>**0.60**</sub> | <sub>**0.86**</sub> |  <sub>0.67</sub>   | <sub>**0.77**</sub> |
+| <sub>Gradient-boosted tree classifier</sub> | <sub>maxDepth=5, maxIter=100</sub>                       |   <sub>0.77</sub>    |   <sub>0.43</sub>   |  <sub>0.73</sub>   |   <sub>0.60</sub>   |   <sub>0.74</sub>   |  <sub>0.50</sub>   |   <sub>0.65</sub>   |
 
 
 ### Acknowledgements
