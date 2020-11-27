@@ -92,7 +92,7 @@ Three binary classifiers supported in Spark are selected as candidate models: lo
 We further extract feature importances from the trained random forest classifier, and learn that **gender**, **latest subscription level** and **location features** contribute little to predicting churned users. This finding was later confirmed on the full dataset that the attributions of these features to model prediction are even more negligible. For this reason, these features are removed during the training on the full dataset, resulting in practically the same performance with a reduction of ~40% training time.
 <p align="center">
     <img src="https://github.com/w-guo/wguo/blob/master/content/post/Sparkify-churn-prediction/feature_importances.png" width="500"> <br />
-    <em><sub>Top 15 most important features</sub></em>
+    <em><sub>Top 15 most important features from mini dataset</sub></em>
 </p>
 The final results of the random forest models evaluated on the respective test set of the mini and full datasets are summarized in the table below:
 
