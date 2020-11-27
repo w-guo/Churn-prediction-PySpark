@@ -1,7 +1,18 @@
 # Customer Churn Prediction using PySpark
 
-This repository contains a Jupyter notebook `Sparkify_mini.ipynb` that documents an end-to-end model development process performed on a simulated streaming service dataset using Python API for Spark, `PySpark`.
+This repository contains the code of building an end-to-end scalable machine learning pipeline using Python API for Spark, `PySpark`, to predict customer churn.
 
+### Overview
+
+- **[Project overview](#project-overview)**
+- **[Problem statement](#problem-statement)**
+- **[Get started](#get-started)**
+  - [Prerequisites](#prerequisites)
+  - [Cloud deployment](#cloud-deployment)
+- **[Common issues on EMR cluster](#common-issues-on-emr-cluster)**
+- **[Results](#results)**
+- **[Acknowledgements](#acknowledgements)**
+  
 ### Project overview
 
 Predicting customer churn is a challenging and common problem for any e-commerce business in which everything depends on the behavior of customers. Customer churn is often defined as the process in which the customers downgrade from premium to free tier or stop using the products or services of a business. Thus, the ability to predict which users are at risk of churning, while there is still time to offer them discounts or other incentives, will greatly help to prevent every custormer-facing business from suffering severe financial losses.
@@ -12,10 +23,10 @@ The dataset in this project is provided by Sparkify, a fictitious digital music 
 
 ### Get started
 
-This repository contains the following files:
+This repository consists of the following files:
 
 * `Sparkify_mini.ipynb`: Jupyter notebook that documents the whole model development process on the smaller dataset including exploratory data analysis, data visualization and discussions
-* `Sparkify_full.ipynb`: modularized version of `Sparkify_mini.ipynb` used to train the full dataset on the AWS EMR cluster
+* `Sparkify_full.ipynb`: modularized version of `Sparkify_mini.ipynb` used to train the full dataset on the Amazon EMR cluster
 * `us_region.csv`: [csv file](https://github.com/cphalpert/census-regions) used in `Sparkify_mini.ipynb` that assigns each state to its geographical division (data source: [U.S. Census Bureau](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf))
 
 #### Prerequisites
@@ -23,15 +34,39 @@ This repository contains the following files:
 To run `Sparkify_mini.ipynb` locally, the following Python libraries are required to be installed in addition to `PySpark`: `Numpy`, `Scipy`, `Pandas`, `Matplotlib`, `seaborn` and `time`.
 
 #### Cloud deployment
-To run `Sparkify_full.ipynb` on the AWS EMR, configure your cluster with the following settings:
+To run `Sparkify_full.ipynb` on the Amazon EMR cluster, configure your cluster with the following settings:
 * Release: `emr-5.20.0` or later
 * Applications: `Spark`: Spark 2.4.0 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0
 * Instance type: `m3.xlarge`
 * Number of instance: `3`
 * EC2 key pair: `Proceed without an EC2 key pair` or feel free to use one
+  
+Then under the `Kernel` tab, set `Change kernel` to `PySpark`. 
 
-### Troubleshooting
+### Common issues on EMR cluster
 
+You may encounter the following issues when you run your notebook on an EMR cluster:
+
+* Missing Python libraries: There are only a limited number of python libraries installed on an EMR cluster.
+Following this [instruction](https://aws.amazon.com/blogs/big-data/install-python-libraries-on-a-running-cluster-with-emr-notebooks/), you can run the code 
+```
+sc.list_packages()
+```
+to check all the available Python libraries on the cluster, then install the other libraries on the cluster attached to your notebook using the `install_pypi_package` API. For example:
+```
+sc.install_pypi_package("pandas==0.25.1") #Install pandas version 0.25.1
+sc.install_pypi_package("matplotlib", "https://pypi.org/simple") #Install matplotlib from given PyPI repository
+```
+After closing your notebook, the libraries that you installed on the cluster using the `install_pypi_package` API are garbage and collected out of the cluster.
+
+* Session timeout: If it takes more than a hour to train your model, you will probably run into an error, such as
+```
+An error was encountered:
+Invalid status code '400' from https://172.31.23.49:18888/sessions/2/statements/19 with error payload: {"msg":"requirement failed: Session isn't active."}
+```
+
+* Job
+  
 ```
 Exception in thread cell_monitor-31:
 Traceback (most recent call last):
@@ -44,10 +79,7 @@ Traceback (most recent call last):
 KeyError: 6490
 ```
 
-```
-An error was encountered:
-Invalid status code '400' from https://172.31.23.49:18888/sessions/2/statements/19 with error payload: {"msg":"requirement failed: Session isn't active."}
-```
+
 
 ### Results
 
