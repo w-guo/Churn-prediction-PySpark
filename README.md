@@ -34,7 +34,7 @@ This repository consists of the following files:
 To run `Sparkify_mini.ipynb` locally, the following Python libraries are required to be installed in addition to `PySpark`: `Numpy`, `Scipy`, `Pandas`, `Matplotlib`, `seaborn` and `time`.
 
 #### Cloud deployment
-To run `Sparkify_full.ipynb` on the Amazon EMR cluster, configure your cluster with the following settings:
+To run `Sparkify_full.ipynb` on the Amazon Elastic MapReduce (EMR) cluster, configure your cluster with the following settings:
 * Release: `emr-5.20.0` or later
 * Applications: `Spark`: Spark 2.4.0 on Hadoop 2.8.5 YARN with Ganglia 3.7.2 and Zeppelin 0.8.0
 * Instance type: `m3.xlarge`
@@ -69,7 +69,7 @@ Click `Reconfigure` and pass the following EMR configuration in the field (you c
 ```
 [{'Classification': 'livy-conf','Properties': {'livy.server.session.timeout':'5h'}}]
 ```
-After you save the setting, wait a few seconds for the cluster to finish reconfiguring.
+After you save the setting, wait a few seconds for the cluster to finish reconfiguring before you rerun your code.
 
 * `Exception in thread cell_monitor-xx`: This exception will be raised occasionally during the training or testing process. It will not cause the process to fail, thus you can just ignore it or add try except to avoid it.
    
@@ -90,7 +90,10 @@ KeyError: 6490
 Three binary classifiers supported in Spark are selected as candidate models: logistic regression, random forest classifier and gradient-boosted tree classifier. We perform a grid search with 4-fold cross validation measured by **AUC-PR** on each model using the mini dataset to tune the hyperparameters, which shows that the tuned random forest classifier outperforms both the logistic regression and the gradient-boosted tree classifier in almost all metric categories. 
 
 We further extract feature importances from the trained random forest classifier, and learn that **gender**, **latest subscription level** and **location features** contribute little to predicting churned users. This finding was later confirmed on the full dataset that the attributions of these features to model prediction are even more negligible. For this reason, these features are removed during the training on the full dataset, resulting in practically the same performance with a reduction of ~40% training time.
-
+<p align="center">
+    <img src="https://github.com/w-guo/wguo/blob/master/content/post/Sparkify-churn-prediction/feature_importances.png" width="500"> <br />
+    <em><sub>Top 15 most important features</sub></em>
+</p>
 The final results of the random forest models evaluated on the respective test set of the mini and full datasets are summarized in the table below:
 
 | <sub>Dataset</sub>      | <sub>Parameters</sub>                | <sub>Precision</sub> |                     | <sub>Recall</sub>  |                     | <sub>F1 score</sub> |                     |  <sub>AUC-PR</sub>  |
