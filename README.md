@@ -89,9 +89,9 @@ KeyError: 6490
 
 Three binary classifiers supported in Spark are selected as candidate models: logistic regression, random forest classifier and gradient-boosted tree classifier. We perform a grid search with 4-fold cross validation measured by **AUC-PR** on each model using the mini dataset to tune the hyperparameters, which shows that the tuned random forest classifier outperforms both the logistic regression and the gradient-boosted tree classifier in almost all metric categories. 
 
-We further extract feature importances from the trained random forest classifier, and learn that **gender**, **latest subscription level** and **location features** contribute little to predicting churned users. This finding was later confirmed on the full dataset that the attributions of these features to model prediction are even more negligible. For this reason, these features are removed during the training on the full dataset, resulting in practically the same performance with a reduction of ~40% training time.
+We further extract feature importances from the trained random forest classifier, and learn that **gender**, **latest subscription level** and **location** features contribute little to predicting churned users as shown below. This finding was later confirmed on the full dataset that the attributions of these features to model prediction are even more negligible. For this reason, these features are removed during the training on the full dataset, resulting in practically the same performance with a reduction of ~40% training time.
 <p align="center">
-    <img src="https://github.com/w-guo/wguo/blob/master/content/post/Sparkify-churn-prediction/feature_importances.png" width="560"> <br />
+    <img src="https://github.com/w-guo/wguo/blob/master/content/post/Sparkify-churn-prediction/feature_importances.png" width="600"> <br />
     <em><sub>Top 15 most important features from mini dataset</sub></em>
 </p>
 The final results of the random forest models evaluated on the respective test set of the mini and full datasets are summarized in the table below:
@@ -102,7 +102,7 @@ The final results of the random forest models evaluated on the respective test s
 | <sub>Mini dataset</sub> | <sub>maxDepth=4, numTrees=100</sub>  |   <sub>0.86</sub>    | <sub>**0.75**</sub> |  <sub>0.86</sub>   | <sub>**0.60**</sub> | <sub>**0.86**</sub> | <sub>**0.67**</sub> | <sub>**0.77**</sub> |
 | <sub>Full dataset</sub> | <sub>maxDepth=10, numTrees=100</sub> |   <sub>0.92</sub>    | <sub>**0.93**</sub> |  <sub>0.91</sub>   | <sub>**0.64**</sub> | <sub>**0.91**</sub> | <sub>**0.76**</sub> | <sub>**0.89**</sub> |
 
- It can be seen that there are sizeable performance gains in every metric category due to more training data. At a default probability threshold of 0.5, our model is currently able to identify 64% of churned users and 7% users identified as churned ones acutally satisfy with the service. If we want to target more users prone to churning, we can lower the probability threshold, and a high AUC-PR score of 0.89 will allow us to maintain a high precision that there will not be many more users with no intent of churning mistakenly targeted. More details can be found in my [blog post](https://wguo.rbind.io/post/sparkify-churn-prediction/).
+ It can be seen that there are sizeable performance gains in every metric category due to more training data. At a default probability threshold of 0.5, our model is currently able to identify 64% of user churn, while 7% identified as churned users acutally satisfy with the service. If we want to target more users prone to churning, we can lower the probability threshold, and a high AUC-PR score of 0.89 will allow us to maintain a high precision that there will not be many more users with no intent of churning mistakenly targeted. More details can be found in my [blog post](https://wguo.rbind.io/post/sparkify-churn-prediction/).
 
 ### Acknowledgements
 Credit to Udacity for designing the project and hosting the datasets:
